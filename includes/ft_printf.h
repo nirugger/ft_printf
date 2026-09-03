@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 16:29:11 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 17:28:16 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/03 18:32:27 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,23 @@ struct s_buffer
 struct s_flags
 {
 	char	flags;
-	int		type;
 	int		width;
 	int		precision;
+	t_types	type;
 	size_t	i;
 };
 
 int		ft_printf(const char *format, ...);
 void	fill_buffer(t_buffer *b, const char *string, size_t n);
 int		int_copy_base(t_buffer *b, long n, char *base);
+void	format_unsigned(t_buffer *b, t_flags *flags, unsigned int n);
+int		int_len(long n, char *base);
+void	format_hex(t_buffer *b, t_flags *flags, unsigned int n);
+void	fill_width(t_buffer *b, t_flags *flags, int len);
 
 void	format_digits(t_buffer *b, t_flags *flags, int n);
 int		ft_strlen(char *s);
+int		ft_max(int a, int b);
 void	*ft_memset(void *buff, int c, size_t n);
 
 #endif //FT_PRINTF_H
