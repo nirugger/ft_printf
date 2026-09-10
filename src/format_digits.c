@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 21:16:49 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:39:01 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:16:05 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_id_format_len(t_flags *flags, int n)
 	sign = 0;
 	if (n < 0 || flags->flags & F_PLUS || flags->flags & F_SPACE)
 		sign = 1;
-	n_len = int_len((long)n, BASE_TEN);
+	n_len = int_len((long)n, B_TEN);
 	if (n == 0 && flags->precision == 0 && flags->flags & F_PREC)
 		sign -= 1;
 	return (ft_max(n_len, flags->precision) + sign);
@@ -31,7 +31,7 @@ static void	fill_buff_with_id(t_buffer *b, t_flags *flags, int n)
 	int	len;
 	int	i;
 
-	len = int_len(n, BASE_TEN);
+	len = int_len(n, B_TEN);
 	i = 0;
 	if (flags->flags & F_PREC || !(flags->flags & F_ZERO))
 	{
@@ -48,7 +48,7 @@ static void	fill_buff_with_id(t_buffer *b, t_flags *flags, int n)
 		i++;
 	}
 	if (!(n == 0 && flags->precision == 0 && flags->flags & F_PREC))
-		int_copy_base(b, (long)n, BASE_TEN);
+		int_base_fill(b, (long)n, B_TEN);
 	return ;
 }
 

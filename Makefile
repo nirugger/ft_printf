@@ -32,7 +32,7 @@ OBJS = $(SRCS:.c=.o)
 
 $(NAME):
 	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-	@echo "$(GREEN) libftprintf.a made ✓$(RESET)"
+	@echo "$(GREEN)libftprintf.a made ✓$(RESET)"
 
 all: $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)

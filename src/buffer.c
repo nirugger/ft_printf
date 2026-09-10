@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 20:02:50 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:43:28 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:23:22 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fill_buffer(t_buffer *b, const char *string, size_t n)
 	return ;
 }
 
-int	int_copy_base(t_buffer *b, long n, char *base)
+int	int_base_fill(t_buffer *b, long n, char *base)
 {
 	int				base_len;
 	unsigned long	power;
@@ -53,7 +53,7 @@ int	int_copy_base(t_buffer *b, long n, char *base)
 	if (n < 0)
 		n *= -1;
 	base_len = ft_strlen(base);
-	power = get_power_long(n, (long)base_len);
+	power = l_base_pow_len(n, (long)base_len);
 	while (power > 0)
 	{
 		c = base[n / power % base_len];
@@ -64,7 +64,7 @@ int	int_copy_base(t_buffer *b, long n, char *base)
 	return (char_count);
 }
 
-int	ul_copy_base(t_buffer *b, unsigned long n, char *base)
+int	ul_base_fill(t_buffer *b, unsigned long n, char *base)
 {
 	int				base_len;
 	unsigned long	power;
@@ -75,7 +75,7 @@ int	ul_copy_base(t_buffer *b, unsigned long n, char *base)
 	if (n == 0)
 		return (fill_buffer(b, "0", 1), 1);
 	base_len = ft_strlen(base);
-	power = get_power_unsigned(n, (unsigned long)base_len);
+	power = ul_base_pow_len(n, (unsigned long)base_len);
 	while (power > 0)
 	{
 		c = base[n / power % base_len];

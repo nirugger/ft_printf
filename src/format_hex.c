@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 18:13:11 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:40:19 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:16:05 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_hex_format_len(t_flags *flags, unsigned int n)
 	sign = 0;
 	if (flags->flags & F_HASH)
 		sign += 2;
-	n_len = int_len((long)n, BASE_LO_HEX);
+	n_len = int_len((long)n, B_HEX_LO);
 	return (ft_max(n_len, flags->precision) + sign);
 }
 
@@ -29,7 +29,7 @@ static void	fill_buff_with_hex(t_buffer *b, t_flags *flags, unsigned int n)
 	int	len;
 	int	i;
 
-	len = int_len(n, BASE_LO_HEX);
+	len = int_len(n, B_HEX_LO);
 	i = 0;
 	if (flags->flags & F_HASH && flags->type == L_X)
 		fill_buffer(b, "0x", 2);
@@ -41,9 +41,9 @@ static void	fill_buff_with_hex(t_buffer *b, t_flags *flags, unsigned int n)
 		i++;
 	}
 	if (flags->type == L_X)
-		int_copy_base(b, (long)n, BASE_LO_HEX);
+		int_base_fill(b, (long)n, B_HEX_LO);
 	else
-		int_copy_base(b, (long)n, BASE_UP_HEX);
+		int_base_fill(b, (long)n, B_HEX_UP);
 	return ;
 }
 

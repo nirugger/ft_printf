@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 19:56:22 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:39:13 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:23:22 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	int_len(long n, char *base)
 	return (len);
 }
 
-long	get_power_long(long n, long base_len)
+long	l_base_pow_len(long n, long base_len)
 {
 	unsigned long	power;
 
@@ -42,7 +42,7 @@ long	get_power_long(long n, long base_len)
 	return (power);
 }
 
-long	get_power_unsigned(unsigned long n, unsigned long base_len)
+long	ul_base_pow_len(unsigned long n, unsigned long base_len)
 {
 	unsigned long	power;
 
@@ -55,7 +55,7 @@ long	get_power_unsigned(unsigned long n, unsigned long base_len)
 	return (power);
 }
 
-int	u_long_len(unsigned long n, char *base)
+int	ul_len(unsigned long n, char *base)
 {
 	int	len;
 	int	base_len;

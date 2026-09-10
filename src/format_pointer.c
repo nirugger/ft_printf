@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 20:03:39 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:39:34 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:16:12 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr)
 	if (ptr == 0)
 		return (format_string(b, flags, "(nil)"));
 	i = 0;
-	len = u_long_len(ptr, BASE_LO_HEX) + 2;
+	len = ul_len(ptr, B_HEX_LO) + 2;
 	if (flags->flags & F_MINUS)
 	{
 		fill_buffer(b, "0x", 2);
-		ul_copy_base(b, ptr, BASE_LO_HEX);
+		ul_base_fill(b, ptr, B_HEX_LO);
 	}
 	while (i < flags->width - len)
 	{
@@ -35,7 +35,7 @@ void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr)
 	if (!(flags->flags & F_MINUS))
 	{
 		fill_buffer(b, "0x", 2);
-		ul_copy_base(b, ptr, BASE_LO_HEX);
+		ul_base_fill(b, ptr, B_HEX_LO);
 	}
 	return ;
 }

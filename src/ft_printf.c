@@ -6,12 +6,11 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:44:17 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 19:09:28 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:29:07 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -35,7 +34,7 @@ int	main(void)
 {
 	char	*string;
 
-	string = "Hello World!";
-	ft_printf("%s", string);
+	string = "Hello 42!";
+	ft_printf("%s\n", string);
 	return (0);
 }

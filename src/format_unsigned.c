@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 17:48:35 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/10 18:39:07 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:16:05 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	get_us_format_len(t_flags *flags, unsigned int n)
 	int	zero;
 
 	zero = 0;
-	n_len = int_len((long)n, BASE_TEN);
+	n_len = int_len((long)n, B_TEN);
 	if (n == 0 && flags->precision == 0 && flags->flags & F_PREC)
 		zero -= 1;
 	return (ft_max(n_len, flags->precision) + zero);
@@ -29,7 +29,7 @@ static void	fill_buff_with_us(t_buffer *b, t_flags *flags, unsigned int n)
 	int	len;
 	int	i;
 
-	len = int_len(n, BASE_TEN);
+	len = int_len(n, B_TEN);
 	i = 0;
 	while (i < flags->precision - len)
 	{
@@ -37,7 +37,7 @@ static void	fill_buff_with_us(t_buffer *b, t_flags *flags, unsigned int n)
 		i++;
 	}
 	if (!(n == 0 && flags->precision == 0 && flags->flags & F_PREC))
-		int_copy_base(b, (long)n, BASE_TEN);
+		int_base_fill(b, (long)n, B_TEN);
 	return ;
 }
 
