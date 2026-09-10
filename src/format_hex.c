@@ -6,14 +6,13 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 18:13:11 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 20:00:43 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:40:19 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-
-int	get_hex_format_len(t_flags *flags, unsigned int n)
+static int	get_hex_format_len(t_flags *flags, unsigned int n)
 {
 	int	n_len;
 	int	sign;
@@ -25,7 +24,7 @@ int	get_hex_format_len(t_flags *flags, unsigned int n)
 	return (ft_max(n_len, flags->precision) + sign);
 }
 
-void	fill_buff_with_hex(t_buffer *b, t_flags *flags, unsigned int n)
+static void	fill_buff_with_hex(t_buffer *b, t_flags *flags, unsigned int n)
 {
 	int	len;
 	int	i;
@@ -62,7 +61,6 @@ void	format_hex(t_buffer *b, t_flags *flags, unsigned int n)
 		flags->flags -= flags->flags & F_ZERO;
 		fill_buff_with_hex(b, flags, n);
 	}
-	
 	while (i < flags->width - ft_max(flags->precision, len))
 	{
 		fill_width(b, flags, len);

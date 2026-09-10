@@ -6,13 +6,13 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 21:16:49 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 20:00:29 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:39:01 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	get_id_format_len(t_flags *flags, int n)
+static int	get_id_format_len(t_flags *flags, int n)
 {
 	int	n_len;
 	int	sign;
@@ -26,7 +26,7 @@ int	get_id_format_len(t_flags *flags, int n)
 	return (ft_max(n_len, flags->precision) + sign);
 }
 
-void	fill_buff_with_id(t_buffer *b, t_flags *flags, int n)
+static void	fill_buff_with_id(t_buffer *b, t_flags *flags, int n)
 {
 	int	len;
 	int	i;
@@ -49,6 +49,7 @@ void	fill_buff_with_id(t_buffer *b, t_flags *flags, int n)
 	}
 	if (!(n == 0 && flags->precision == 0 && flags->flags & F_PREC))
 		int_copy_base(b, (long)n, BASE_TEN);
+	return ;
 }
 
 void	fill_width(t_buffer *b, t_flags *flags, int len)
@@ -67,9 +68,10 @@ void	fill_width(t_buffer *b, t_flags *flags, int len)
 		else
 			fill_buffer(b, " ", 1);
 	}
+	return ;
 }
 
-void	fill_sign(t_buffer *b, t_flags *flags, int n)
+static void	fill_sign(t_buffer *b, t_flags *flags, int n)
 {
 	char	sign;
 
@@ -85,8 +87,8 @@ void	fill_sign(t_buffer *b, t_flags *flags, int n)
 	}
 	if (sign)
 		fill_buffer(b, &sign, 1);
+	return ;
 }
-
 
 void	format_digits(t_buffer *b, t_flags *flags, int n)
 {

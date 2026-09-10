@@ -6,7 +6,7 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 16:29:11 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 18:32:27 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:30:03 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,49 @@ struct s_flags
 	size_t	i;
 };
 
-int		ft_printf(const char *format, ...);
+// ----- BUFFER -----
+void	put_buffer(t_buffer *b);
 void	fill_buffer(t_buffer *b, const char *string, size_t n);
 int		int_copy_base(t_buffer *b, long n, char *base);
-void	format_unsigned(t_buffer *b, t_flags *flags, unsigned int n);
-int		int_len(long n, char *base);
+int		ul_copy_base(t_buffer *b, unsigned long n, char *base);
+void	format_and_fill(const char *s, t_buffer *b, t_flags *f, va_list *a);
+
+// ----- FLAGS -----
+void	assign_flag(t_flags *flags, char c);
+int		fill_flags(const char *format, t_flags *flags);
+void	reset_flags(t_flags *flags);
+
+// ----- TYPES -----
+void	assign_type(t_flags *flags, char c);
+void	type_router(t_buffer *b, t_flags *flags, va_list args);
+
+// ----- FORMAT -----
+void	format_char(t_buffer *b, t_flags *flags, char c);
+void	format_digits(t_buffer *b, t_flags *flags, int n);
 void	format_hex(t_buffer *b, t_flags *flags, unsigned int n);
+void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr);
+void	format_string(t_buffer *b, t_flags *flags, char *s);
+void	format_unsigned(t_buffer *b, t_flags *flags, unsigned int n);
 void	fill_width(t_buffer *b, t_flags *flags, int len);
 
-void	format_digits(t_buffer *b, t_flags *flags, int n);
-int		ft_strlen(char *s);
+// ----- LIBFT -----
+int		ft_min(int a, int b);
 int		ft_max(int a, int b);
-void	*ft_memset(void *buff, int c, size_t n);
+int		ft_basic_atoi(const char *s);
+int		ft_strlen(char *s);
+void	*ft_memset(void *s, int c, size_t n);
+
+// ----- UTILS -----
+int		int_len(long n, char *base);
+long	get_power_long(long n, long base_len);
+long	get_power_unsigned(unsigned long n, unsigned long base_len);
+int		u_long_len(unsigned long n, char *base);
+
+// ----- CHECKERS -----
+int	ft_is_digit(char c);
+int	ft_is_type(char c);
+int	ft_is_flag(char c);
+
+
 
 #endif //FT_PRINTF_H

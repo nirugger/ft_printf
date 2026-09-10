@@ -6,14 +6,13 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 17:48:35 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 19:28:22 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:39:07 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-
-int	get_us_format_len(t_flags *flags, unsigned int n)
+static int	get_us_format_len(t_flags *flags, unsigned int n)
 {
 	int	n_len;
 	int	zero;
@@ -25,7 +24,7 @@ int	get_us_format_len(t_flags *flags, unsigned int n)
 	return (ft_max(n_len, flags->precision) + zero);
 }
 
-void	fill_buff_with_us(t_buffer *b, t_flags *flags, unsigned int n)
+static void	fill_buff_with_us(t_buffer *b, t_flags *flags, unsigned int n)
 {
 	int	len;
 	int	i;
@@ -39,8 +38,8 @@ void	fill_buff_with_us(t_buffer *b, t_flags *flags, unsigned int n)
 	}
 	if (!(n == 0 && flags->precision == 0 && flags->flags & F_PREC))
 		int_copy_base(b, (long)n, BASE_TEN);
+	return ;
 }
-
 
 void	format_unsigned(t_buffer *b, t_flags *flags, unsigned int n)
 {

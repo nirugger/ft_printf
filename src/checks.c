@@ -6,11 +6,11 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 19:54:51 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 19:55:18 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:42:09 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_is_digit(char c)
 {
@@ -19,11 +19,26 @@ int	ft_is_digit(char c)
 
 int	ft_is_type(char c)
 {
-	return (c == 'c' || c == 's' || c == 'p' || c == 'd' ||
-		c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%');
+	return (
+		c == 'c' || \
+		c == 's' || \
+		c == 'p' || \
+		c == 'd' || \
+		c == 'i' || \
+		c == 'u' || \
+		c == 'x' || \
+		c == 'X' || \
+		c == '%'
+	);
 }
 
 int	ft_is_flag(char c)
 {
-	return (c == '-' || c == '0' || c == '#' || c == ' ' || c == '+');
+	return (
+		c == '-' || \
+		c == '0' || \
+		c == '#' || \
+		c == ' ' || \
+		c == '+'
+	);
 }

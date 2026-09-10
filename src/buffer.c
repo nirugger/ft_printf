@@ -6,18 +6,18 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 20:02:50 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 20:07:46 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:43:28 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
-
+#include "../includes/ft_printf.h"
 
 void	put_buffer(t_buffer *b)
 {
 	write(1, b->buff, b->now);
 	b->printed += b->now;
 	b->now = 0;
+	return ;
 }
 
 void	fill_buffer(t_buffer *b, const char *string, size_t n)
@@ -42,10 +42,10 @@ void	fill_buffer(t_buffer *b, const char *string, size_t n)
 
 int	int_copy_base(t_buffer *b, long n, char *base)
 {
-	int		base_len;
+	int				base_len;
 	unsigned long	power;
-	char	c;
-	int		char_count;
+	char			c;
+	int				char_count;
 
 	char_count = 0;
 	if (n == 0)
@@ -64,16 +64,16 @@ int	int_copy_base(t_buffer *b, long n, char *base)
 	return (char_count);
 }
 
-int	u_long_copy_base(t_buffer *b, unsigned long n, char *base)
+int	ul_copy_base(t_buffer *b, unsigned long n, char *base)
 {
-	int		base_len;
+	int				base_len;
 	unsigned long	power;
-	char	c;
-	int		char_count;
+	char			c;
+	int				char_count;
 
 	char_count = 0;
 	if (n == 0)
-	return (fill_buffer(b, "0", 1), 1);
+		return (fill_buffer(b, "0", 1), 1);
 	base_len = ft_strlen(base);
 	power = get_power_unsigned(n, (unsigned long)base_len);
 	while (power > 0)
@@ -83,5 +83,26 @@ int	u_long_copy_base(t_buffer *b, unsigned long n, char *base)
 		power /= base_len;
 		char_count++;
 	}
-	return char_count;
+	return (char_count);
+}
+
+void	format_and_fill(const char *s, t_buffer *b, t_flags *f, va_list *a)
+{
+	if (s[f->i] != '%')
+	{
+		fill_buffer(b, s + f->i, 1);
+		f->i++;
+	}
+	else
+	{
+		if (fill_flags(s, f))
+			type_router(b, f, *a);
+		else
+		{
+			fill_buffer(b, s + f->i, 1);
+			f->i++;
+		}
+		reset_flags(f);
+	}
+	return ;
 }

@@ -6,11 +6,11 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 20:03:39 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 20:03:53 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:39:34 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr)
 {
@@ -25,7 +25,7 @@ void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr)
 	if (flags->flags & F_MINUS)
 	{
 		fill_buffer(b, "0x", 2);
-		u_long_copy_base(b, ptr, BASE_LO_HEX);
+		ul_copy_base(b, ptr, BASE_LO_HEX);
 	}
 	while (i < flags->width - len)
 	{
@@ -35,6 +35,7 @@ void	format_pointer(t_buffer *b, t_flags *flags, unsigned long ptr)
 	if (!(flags->flags & F_MINUS))
 	{
 		fill_buffer(b, "0x", 2);
-		u_long_copy_base(b, ptr, BASE_LO_HEX);
+		ul_copy_base(b, ptr, BASE_LO_HEX);
 	}
+	return ;
 }

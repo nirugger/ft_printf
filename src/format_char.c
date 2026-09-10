@@ -6,11 +6,11 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 19:55:43 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 19:56:07 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:39:41 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	format_char(t_buffer *b, t_flags *flags, char c)
 {

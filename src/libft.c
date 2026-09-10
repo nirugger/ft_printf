@@ -6,11 +6,11 @@
 /*   By: nirugger <nirugger@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 19:58:41 by nirugger          #+#    #+#             */
-/*   Updated: 2026/09/03 20:06:48 by nirugger         ###   ########.fr       */
+/*   Updated: 2026/09/10 18:39:22 by nirugger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_min(int a, int b)
 {
