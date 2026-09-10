@@ -39,7 +39,7 @@ all: $(OBJS)
 	@echo "$(GREEN)m$(RED)e$(GREEN)r$(RED)r$(GREEN)y $(RED)c$(GREEN)h$(RED)r$(GREEN)i$(RED)s$(GREEN)t$(RED)m$(GREEN)a$(RED)s$(RESET)"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: all
 
